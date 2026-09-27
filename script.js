@@ -17,10 +17,10 @@ function timer () {
     nf=getNextFriday(currentDate)
     distance=nf-currentDate
     
-    days=Math.floor(distance/1000/60/60/24)
-    hours=Math.floor(distance/1000/60/60)%24
-    minutes=Math.floor(distance/1000/60)%60
-    seconds=Math.floor(distance/1000)%60
+    days=(Math.floor(distance/1000/60/60/24))
+    hours=String(Math.floor(distance/1000/60/60)%24).padStart(2, '0')
+    minutes=String(Math.floor(distance/1000/60)%60).padStart(2, '0')
+    seconds=String(Math.floor(distance/1000)%60).padStart(2, '0')
 
     if(days>5 || (days==5 && hours>= 17)){
         time.innerHTML="Session is in progress! Yayy!! <br> Next session: "+days + " Days, " + hours+ ":" + minutes + ":" + seconds 
