@@ -38,10 +38,9 @@ function shiftOpacity() {
   let progress = 0;
   
   let timer = setInterval(function() {
-    progress += 0.05;
+    progress += 0.005;
     
     if (layerOneActive) {
-        console.log("shifting opacity")
       body.style.setProperty('--bg-opacity', 1 - progress);
       body.style.setProperty('--bga-opacity', progress);  
     } else {
@@ -53,7 +52,7 @@ function shiftOpacity() {
       clearInterval(timer); 
       layerOneActive = !layerOneActive;
     }
-  }, 50);
+  }, 5);
 }
 
 function shiftBackground(){
