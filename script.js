@@ -1,4 +1,7 @@
-const time = document.getElementById("Time")
+const time = document.getElementById("Time");
+const body = document.body
+const background_num=2;
+var i=background_num-1;
 
 function getNextFriday(date = new Date()) {
   var result = new Date(date);
@@ -30,4 +33,13 @@ function timer () {
     }
 }
 
+function shiftBackground(){
+    i=(i+1)%background_num;
+    background="background"+i;
+    console.log(background);
+
+    body.style.setProperty("--bg-image", 'url('+background+'.png)')
+}
+
 setInterval(timer, 1000)
+setInterval(shiftBackground, 10000)

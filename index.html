@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Server Countdown</title>
-        <style>
+        <style id="doc-st">
             body {
+                --bg-image:url("background0.png");
                 background-color: burlywood;
                 color: antiquewhite;
                 -webkit-text-stroke: 2px black;
@@ -30,7 +31,7 @@
                 bottom: -10px;
                 z-index: -1;
                 
-                background-image: url("background1.png");
+                background-image: var(--bg-image);
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
