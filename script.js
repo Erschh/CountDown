@@ -1,7 +1,8 @@
 const time = document.getElementById("Time");
 const body = document.body
-const background_num=2;
-var i=background_num-1;
+const background_num=4;
+let layerOneActive=true;
+var i=0;
 
 function getNextFriday(date = new Date()) {
   var result = new Date(date);
@@ -33,13 +34,42 @@ function timer () {
     }
 }
 
-function shiftBackground(){
-    i=(i+1)%background_num;
-    background="background"+i;
-    console.log(background);
+function shiftOpacity() {
+  let progress = 0;
+  
+  let timer = setInterval(function() {
+    progress += 0.05;
+    
+    if (layerOneActive) {
+        console.log("shifting opacity")
+      body.style.setProperty('--bg-opacity', 1 - progress);
+      body.style.setProperty('--bga-opacity', progress);  
+    } else {
+      body.style.setProperty('--bg-opacity', progress);
+      body.style.setProperty('--bga-opacity', 1 - progress);
+    }
 
-    body.style.setProperty("--bg-image", 'url('+background+'.png)')
+    if (progress >= 1) {
+      clearInterval(timer); 
+      layerOneActive = !layerOneActive;
+    }
+  }, 50);
 }
 
-setInterval(timer, 1000)
-setInterval(shiftBackground, 10000)
+function shiftBackground(){
+    i=(i+1)%background_num;
+    nextbackground="background"+i;
+    console.log(nextbackground);
+
+    if(layerOneActive){
+        body.style.setProperty("--bga-image", 'url('+nextbackground+'.png)')
+    }
+    else{
+        body.style.setProperty("--bg-image", 'url('+nextbackground+'.png)')
+    }
+
+    shiftOpacity()
+}
+
+setInterval(timer, 1000);
+setInterval(shiftBackground, 10000);
