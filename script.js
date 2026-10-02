@@ -21,7 +21,7 @@ function timer () {
     nf=getNextFriday(currentDate)
     distance=nf-currentDate
     
-    days=(Math.floor(distance/1000/60/60/24))
+    days=(Math.floor(distance/1000/60/60/24)%7)
     hours=String(Math.floor(distance/1000/60/60)%24).padStart(2, '0')
     minutes=String(Math.floor(distance/1000/60)%60).padStart(2, '0')
     seconds=String(Math.floor(distance/1000)%60).padStart(2, '0')
