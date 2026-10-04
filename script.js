@@ -1,5 +1,5 @@
 const time = document.getElementById("Time");
-const body = document.body
+const background_image=document.getElementById("background_layer")
 const background_num=4;
 let layerOneActive=true;
 var i=0;
@@ -69,13 +69,25 @@ function compatTimer(){
 }
 
 
-function shiftBackground(){
-    i=(i+1)%background_num;
-    nextbackground="background"+i;
+function shiftBackground() {
+    i = (i + 1) % background_num;
+    const nextbackground = "background" + i + ".png";
 
-    document.startViewTransition(() => {
-      body.style.setProperty('--bg-image', 'url('+nextbackground+'.png)');
-    });
+    const fadeLayer = background_image.cloneNode();
+    fadeLayer.id = "";
+    fadeLayer.className = "bg-crossfade"; 
+    fadeLayer.style.backgroundImage = 'url(' + nextbackground + ')';
+    
+    background_image.parentNode.insertBefore(fadeLayer, background_image.nextSibling);
+
+    void fadeLayer.offsetWidth;
+    
+    fadeLayer.style.opacity = 1;
+
+    setTimeout(() => {
+        background_image.style.backgroundImage = 'url(' + nextbackground + ')';
+        fadeLayer.remove();
+    }, 1000); 
 }
 
 function openNav() {
