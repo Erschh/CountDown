@@ -22,7 +22,7 @@ function getCompetDeadline(date=new Date){
   const daysUntilFriday = (6 - result.getDay()) % 7 || 7;
   
   result.setDate(result.getDate() + daysUntilFriday);
-  result.setHours(19)
+  result.setHours(15)
   result.setMinutes(0)
   result.setSeconds(0)
   return result;
@@ -55,13 +55,11 @@ function compatTimer(){
 
   days=(Math.floor(distance/1000/60/60/24)%7)
   hours=String(Math.floor(distance/1000/60/60)%24).padStart(2, '0')
-  if(days>1 || (days==1 && hours>2))
+  if(days>1 || (days==0 && hours>22))
     timestr="Jelenleg nem aktív az esemény!"
   else{
     minutes=String(Math.floor(distance/1000/60)%60).padStart(2, '0')
     seconds=String(Math.floor(distance/1000)%60).padStart(2, '0')
-
-    if(days==1) timestr=timestr+"1 Day,"
     timestr=timestr+hours+":"+minutes+":"+seconds+" left until judgement."
   }
   
