@@ -19,9 +19,9 @@ function getNextFriday(date) {
 function getCompetDeadline(date=new Date){
   var result = new Date(date);
   
-  const daysUntilFriday = (6 - result.getDay()) % 7 || 7;
+  const daysUntilCompat = (6 - result.getDay()) % 7 || 7;
   
-  result.setDate(result.getDate() + daysUntilFriday);
+  result.setDate(result.getDate() + daysUntilCompat);
   result.setHours(15)
   result.setMinutes(0)
   result.setSeconds(0)
