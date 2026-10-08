@@ -19,7 +19,7 @@ function getNextFriday(date) {
 function getCompetDeadline(date=new Date){
   var result = new Date(date);
   
-  const daysUntilCompat = (6 - result.getDay()) % 7 || 7;
+  const daysUntilCompat = (6 - result.getDay()+7) % 7 || 7;
   
   result.setDate(result.getDate() + daysUntilCompat);
   result.setHours(15)
@@ -49,18 +49,18 @@ function timer () {
 function compatTimer(){
   const currentDate = new Date().getTime()
   ns=getCompetDeadline(currentDate)
-  distance=ns-currentDate
+  distance2=ns-currentDate
 
   timestr=""
 
-  days=(Math.floor(distance/1000/60/60/24)%7)
-  hours=String(Math.floor(distance/1000/60/60)%24).padStart(2, '0')
-  if(days>1 || (days==0 && hours>22))
+  days2=(Math.floor(distance2/1000/60/60/24)%7)
+  hours2=String(Math.floor(distance2/1000/60/60)%24).padStart(2, '0')
+  if(days2>=1 || (days2==0 && hours>22))
     timestr="Jelenleg nem aktív az esemény!"
   else{
-    minutes=String(Math.floor(distance/1000/60)%60).padStart(2, '0')
-    seconds=String(Math.floor(distance/1000)%60).padStart(2, '0')
-    timestr=timestr+hours+":"+minutes+":"+seconds+" left until judgement."
+    minutes2=String(Math.floor(distance2/1000/60)%60).padStart(2, '0')
+    seconds2=String(Math.floor(distance2/1000)%60).padStart(2, '0')
+    timestr=timestr+hours2+":"+minutes2+":"+seconds2+" left until judgement."
   }
   
   document.getElementById("event_cd").innerHTML=timestr
