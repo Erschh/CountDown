@@ -55,7 +55,7 @@ function compatTimer(){
 
   days2=(Math.floor(distance2/1000/60/60/24)%7)
   hours2=String(Math.floor(distance2/1000/60/60)%24).padStart(2, '0')
-  if(days2>=1 || (days2==0 && hours>22))
+  if(days2>=1 || (days2==0 && hours2>22))
     timestr="Jelenleg nem aktív az esemény!"
   else{
     minutes2=String(Math.floor(distance2/1000/60)%60).padStart(2, '0')
